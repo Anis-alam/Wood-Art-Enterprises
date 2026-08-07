@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Search } from "lucide-react";
 
 import SEO from "../components/common/SEO";
@@ -13,11 +13,20 @@ export default function Products() {
   const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+
+  const [searchParams] = useSearchParams();
+
+  const urlCategory = searchParams.get("category") || "All";
+
+  const [category, setCategory] = useState(urlCategory);
 
   useEffect(() => {
     loadProducts();
   }, []);
+
+  useEffect(() => {
+    setCategory(urlCategory);
+  }, [urlCategory]);
 
   async function loadProducts() {
     try {
@@ -33,48 +42,48 @@ export default function Products() {
       setLoading(false);
     }
   }
-
   useEffect(() => {
     let data = [...products];
 
     if (category !== "All") {
-      data = data.filter((item) => item.category === category);
+      data = data.filter(
+        (item) =>
+          item.category &&
+          item.category.toLowerCase() === category.toLowerCase(),
+      );
     }
 
     if (search.trim() !== "") {
       data = data.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase()),
+        item.name?.toLowerCase().includes(search.toLowerCase()),
       );
     }
 
     setFilteredProducts(data);
-  }, [search, category, products]);
+  }, [products, category, search]);
 
   const categories = ["All", ...new Set(products.map((item) => item.category))];
-
   return (
     <>
       <SEO
-        title="Furniture Collection | Wood Art Enterprises"
-        description="Browse our premium wooden furniture collection including sofas, beds, wardrobes, dining tables, office furniture and custom furniture."
-        keywords="wood furniture, sofa, bed, wardrobe, dining table, office furniture, premium furniture"
+        title="Products | Wood Art Enterprises"
+        description="Explore premium furniture collection."
       />
 
-      <section className="py-28 bg-[#faf7f2] min-h-screen">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="min-h-screen bg-[#faf7f2] py-28">
+        <div className="mx-auto max-w-7xl px-6">
           {/* Heading */}
 
-          <div className="text-center mb-14">
-            <h1 className="text-5xl font-bold text-[#3E2723]">Our Products</h1>
+          <div className="mb-14 text-center">
+            <h1 className="text-5xl font-bold text-[#3E2723]">
+              {category === "All" ? "Our Products" : category}
+            </h1>
 
-            <p className="text-gray-500 mt-4">
+            <p className="mt-4 text-gray-500">
               Explore our premium handcrafted furniture collection.
             </p>
           </div>
-
-          {/* Search & Filter */}
-
-          <div className="flex flex-col md:flex-row gap-5 mb-10">
+          <div className="mb-10 flex flex-col gap-5 md:flex-row">
             <div className="relative flex-1">
               <Search
                 size={18}
@@ -83,17 +92,17 @@ export default function Products() {
 
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Search Products..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-xl border pl-12 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B5E3C]"
+                className="w-full rounded-xl border py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-[#8B5E3C]"
               />
             </div>
 
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="border rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B5E3C]"
+              className="rounded-xl border px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B5E3C]"
             >
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
@@ -102,26 +111,24 @@ export default function Products() {
               ))}
             </select>
           </div>
-
           {/* Products */}
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
               {Array.from({ length: 8 }).map((_, index) => (
                 <SkeletonCard key={index} />
               ))}
             </div>
           ) : filteredProducts.length === 0 ? (
-            <div className="text-center py-24">
-              <div className="text-7xl mb-5">📦</div>
+            <div className="py-24 text-center">
+              <div className="mb-5 text-7xl">📦</div>
 
               <h2 className="text-3xl font-bold text-[#3E2723]">
                 No Products Found
               </h2>
 
               <p className="mt-3 text-gray-500">
-                Try searching with another keyword or choose a different
-                category.
+                Try another search or choose a different category.
               </p>
 
               <button
@@ -129,37 +136,43 @@ export default function Products() {
                   setSearch("");
                   setCategory("All");
                 }}
-                className="mt-6 bg-[#8B5E3C] hover:bg-[#6D4C41] text-white px-8 py-3 rounded-xl transition duration-300"
+                className="mt-6 rounded-xl bg-[#8B5E3C] px-8 py-3 text-white transition hover:bg-[#6D4C41]"
               >
                 Reset Filters
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
               {filteredProducts.map((product) => (
                 <Link
                   key={product.id}
                   to={`/product/${product.id}`}
-                  className="group bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                  className="group overflow-hidden rounded-3xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 >
                   <div className="overflow-hidden">
                     <LazyImage
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
+                      className="h-72 w-full object-cover transition duration-500 group-hover:scale-105"
                     />
                   </div>
 
                   <div className="p-5">
-                    <h3 className="text-xl font-bold text-[#3E2723] line-clamp-1">
+                    <div className="mb-2 inline-block rounded-full bg-[#8B5E3C]/10 px-3 py-1 text-sm font-medium text-[#8B5E3C]">
+                      {product.category}
+                    </div>
+
+                    <h3 className="line-clamp-1 text-xl font-bold text-[#3E2723]">
                       {product.name}
                     </h3>
-
-                    <p className="mt-2 text-gray-500">{product.category}</p>
 
                     <p className="mt-3 text-2xl font-bold text-[#8B5E3C]">
                       ₹ {product.price}
                     </p>
+
+                    <button className="mt-5 w-full rounded-xl bg-[#8B5E3C] py-3 font-semibold text-white transition hover:bg-[#6D4C41]">
+                      View Details
+                    </button>
                   </div>
                 </Link>
               ))}

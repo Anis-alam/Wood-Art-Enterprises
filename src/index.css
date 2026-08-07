@@ -314,3 +314,72 @@ a:focus-visible {
 .transition-smooth {
   transition: all 0.35s ease;
 }
+
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+html.dark {
+  background: #111827;
+}
+
+html.dark body {
+  background: #111827;
+  color: #f9fafb;
+}
+
+html.dark #root {
+  background: #111827;
+}
+
+
+/* Cards */
+
+html.dark .premium-card {
+  background: #1f2937;
+  color: white;
+}
+
+
+/* Inputs */
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #9ca3af;
+}
+
+
+/* Tables */
+
+html.dark table {
+  background: #1f2937;
+  color: white;
+}
+
+html.dark thead {
+  background: #8B5E3C;
+}
+
+html.dark tbody tr {
+  border-color: #374151;
+}
+
+html.dark tbody tr:hover {
+  background: #374151;
+}
+
+
+/* Scrollbar */
+
+html.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}

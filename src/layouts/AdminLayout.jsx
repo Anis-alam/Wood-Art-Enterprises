@@ -9,7 +9,7 @@ export default function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="h-screen bg-[#F5F6FA] overflow-hidden">
+    <div className="flex">
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
@@ -20,9 +20,9 @@ export default function AdminLayout() {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 z-50 h-screen w-64 transform bg-[#3E2723] transition-transform duration-300
-        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-        lg:translate-x-0`}
+        className={`fixed top-0 left-0 z-50 h-screen w-64 transform bg-[#3E2723] transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0`}
       >
         <div className="lg:hidden absolute top-4 right-4">
           <button onClick={() => setSidebarOpen(false)} className="text-white">
@@ -30,11 +30,11 @@ export default function AdminLayout() {
           </button>
         </div>
 
-        <Sidebar />
+        <Sidebar closeSidebar={() => setSidebarOpen(false)} />
       </div>
 
       {/* Main Content */}
-      <div className="lg:ml-64 h-screen flex flex-col">
+      <div className="flex flex-col flex-1 lg:ml-64 h-screen">
         {/* Mobile Header */}
         <div className="lg:hidden bg-white shadow px-5 py-4 flex items-center justify-between">
           <h1 className="font-bold text-xl">WOOD ART</h1>
@@ -46,7 +46,6 @@ export default function AdminLayout() {
 
         <Topbar />
 
-        {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto p-6 lg:p-8">
           <Outlet />
         </main>

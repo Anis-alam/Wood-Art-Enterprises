@@ -53,7 +53,7 @@ const menus = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ closeSidebar }) {
   const navigate = useNavigate();
 
   async function handleLogout() {
@@ -61,6 +61,11 @@ export default function Sidebar() {
 
     try {
       await signOut(auth);
+
+      if (window.innerWidth < 1024) {
+        closeSidebar();
+      }
+
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);
@@ -68,12 +73,17 @@ export default function Sidebar() {
     }
   }
 
-  return (
-    <aside className="h-screen w-64 bg-[#3E2723] text-white flex flex-col shadow-xl">
-      {/* Logo */}
-      <div className="border-b border-white/10 py-8 text-center">
-        <h1 className="text-3xl font-bold tracking-wide">WOOD ART</h1>
+  function handleMobileClose() {
+    if (window.innerWidth < 1024) {
+      closeSidebar();
+    }
+  }
 
+  return (
+    <aside className="flex h-screen flex-col bg-[#3E2723] text-white">
+      {/* Logo */}
+      <div className="border-b border-white/10 p-6 text-center">
+        <h1 className="text-3xl font-bold tracking-wide">WOOD ART</h1>
         <p className="mt-1 text-sm text-gray-300">Admin Dashboard</p>
       </div>
 
@@ -86,7 +96,6 @@ export default function Sidebar() {
 
           <div>
             <h3 className="font-semibold">Administrator</h3>
-
             <p className="text-xs text-gray-200">Wood Art Enterprises</p>
           </div>
         </div>
@@ -98,10 +107,11 @@ export default function Sidebar() {
           <NavLink
             key={menu.path}
             to={menu.path}
+            onClick={handleMobileClose}
             className={({ isActive }) =>
               `group mb-2 flex items-center justify-between rounded-xl px-4 py-3 transition-all duration-300 ${
                 isActive
-                  ? "bg-[#8B5E3C] border-l-4 border-[#D4AF37]"
+                  ? "border-l-4 border-[#D4AF37] bg-[#8B5E3C]"
                   : "hover:bg-[#4E342E]"
               }`
             }
@@ -109,9 +119,8 @@ export default function Sidebar() {
             <div className="flex items-center gap-3">
               <menu.icon
                 size={20}
-                className="group-hover:scale-110 transition"
+                className="transition group-hover:scale-110"
               />
-
               <span className="font-medium">{menu.title}</span>
             </div>
 
