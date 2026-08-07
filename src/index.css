@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+/* ======================================================
+   GLOBAL RESET
+====================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ======================================================
+   HTML
+====================================================== */
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+
+/* ======================================================
+   BODY
+====================================================== */
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Inter, system-ui, sans-serif;
+  background: #ffffff;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ======================================================
+   ROOT
+====================================================== */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* ======================================================
+   IMAGES
+====================================================== */
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ======================================================
+   LINKS
+====================================================== */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+/* ======================================================
+   INPUTS
+====================================================== */
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* ======================================================
+   FOCUS
+====================================================== */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #8B5E3C;
+  outline-offset: 3px;
+}
+
+
+/* ======================================================
+   TEXT SELECTION
+====================================================== */
+
+::selection {
+  background: #8B5E3C;
+  color: #ffffff;
+}
+
+
+/* ======================================================
+   SCROLLBAR
+====================================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f3f3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B5E3C;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6D4C41;
+}
+
+
+/* ======================================================
+   ANIMATIONS
+====================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.45s ease-in-out;
+}
+
+
+/* ======================================================
+   PREMIUM CARD
+====================================================== */
+
+.premium-card {
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ======================================================
+   HOVER LIFT
+====================================================== */
+
+.hover-lift {
+  transition: all 0.35s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ======================================================
+   PRIMARY BUTTON
+====================================================== */
+
+.btn-primary {
+  background: #8B5E3C;
+  color: #ffffff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #6D4C41;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(139, 94, 60, 0.35);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+
+/* ======================================================
+   SECONDARY BUTTON
+====================================================== */
+
+.btn-secondary {
+  background: #ffffff;
+  color: #8B5E3C;
+  border: 2px solid #8B5E3C;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #8B5E3C;
+  color: white;
+}
+
+
+/* ======================================================
+   GLASS EFFECT
+====================================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+
+/* ======================================================
+   PAGE SECTION
+====================================================== */
+
+.section {
+  animation: fadeIn 0.5s ease;
+}
+
+
+/* ======================================================
+   INPUT STYLE
+====================================================== */
+
+.input-modern {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.input-modern:focus {
+  border-color: #8B5E3C;
+  box-shadow: 0 0 0 4px rgba(139, 94, 60, 0.15);
+  outline: none;
+}
+
+
+/* ======================================================
+   TABLE
+====================================================== */
+
+.table-modern {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ======================================================
+   IMAGE HOVER
+====================================================== */
+
+.image-hover {
+  overflow: hidden;
+}
+
+.image-hover img {
+  transition: transform 0.5s ease;
+}
+
+.image-hover:hover img {
+  transform: scale(1.08);
+}
+
+
+/* ======================================================
+   SMOOTH TRANSITIONS
+====================================================== */
+
+.transition-smooth {
+  transition: all 0.35s ease;
+}
