@@ -2,7 +2,7 @@ import MainLayout from "../layouts/MainLayout";
 import Hero from "../components/home/Hero";
 import Services from "../components/home/Services";
 import WhyChooseUs from "../components/home/WhyChooseUs";
-import FeaturedProducts from "../components/home/FeaturedProducts";
+// import FeaturedProducts from "../components/home/FeaturedProducts";
 import ProductsSection from "../components/home/ProductsSection";
 import SEO from "../components/common/SEO";
 
@@ -28,9 +28,9 @@ export default function Home() {
           <WhyChooseUs />
         </div>
 
-        <div data-aos="zoom-in" data-aos-delay="200">
+        {/* <div data-aos="zoom-in" data-aos-delay="200">
           <FeaturedProducts />
-        </div>
+        </div> */}
 
         <div data-aos="fade-up" data-aos-delay="250">
           <ProductsSection />
