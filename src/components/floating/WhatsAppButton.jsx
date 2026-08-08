@@ -27,7 +27,7 @@ export default function WhatsAppButton() {
 
         {/* Button */}
         <div className="relative w-16 h-16 rounded-full bg-green-500 hover:bg-green-600 shadow-2xl flex items-center justify-center text-white transition">
-          <MessageCircle size={32} />
+          <MessageCircle size={20} />
         </div>
 
         {/* Tooltip */}
