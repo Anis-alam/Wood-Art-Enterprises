@@ -287,7 +287,7 @@ export default function ProductDetails() {
                 {/* WhatsApp */}
 
                 <a
-                  href={`https://wa.me/8510935683?text=Hi, I am interested in ${encodeURIComponent(product.name)}`}
+                  href={`https://wa.me/+918510935683?text=Hi, I am interested in ${encodeURIComponent(product.name)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-8 py-4 font-semibold text-white transition hover:bg-green-700"
