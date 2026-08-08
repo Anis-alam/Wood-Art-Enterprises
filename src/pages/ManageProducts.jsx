@@ -260,8 +260,8 @@ export default function ManageProducts() {
                     to={`/dashboard/edit/${product.id}`}
                     className="flex items-center justify-center gap-2 rounded-xl bg-yellow-500 py-3 text-white hover:bg-yellow-600 transition"
                   >
-                    <Pencil size={18} />
-                    Edit
+                    {/* <Pencil size={18} />
+                    Edit */}
                   </Link>
 
                   <button
