@@ -40,7 +40,7 @@ export default function BackToTop() {
         }
       `}
     >
-      <ChevronUp size={22} className="mx-auto" />
+      <ChevronUp size={15} className="mx-auto" />
     </button>
   );
 }
