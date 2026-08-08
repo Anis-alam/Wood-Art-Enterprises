@@ -10,7 +10,7 @@ import BackToTop from "./components/floating/BackToTop";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminLayout from "./layouts/AdminLayout";
 
-// Pages
+// Public Pages
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
@@ -18,6 +18,7 @@ import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import Login from "./pages/Login";
 
+// Admin Pages
 import Dashboard from "./pages/Dashboard";
 import AddProduct from "./pages/AddProduct";
 import ManageProducts from "./pages/ManageProducts";
@@ -25,8 +26,8 @@ import Categories from "./pages/Categories";
 import Customers from "./pages/Customers";
 import Enquiries from "./pages/Enquiries";
 import Settings from "./pages/Settings";
-// import EditProduct from "./pages/EditProduct";
 
+// 404 Page
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -55,6 +56,7 @@ export default function App() {
     <>
       <Routes>
         {/* Public Routes */}
+
         <Route path="/" element={<Home />} />
 
         <Route path="/products" element={<Products />} />
@@ -68,6 +70,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
 
         {/* Admin Routes */}
+
         <Route
           path="/dashboard"
           element={
@@ -89,11 +92,10 @@ export default function App() {
           <Route path="enquiries" element={<Enquiries />} />
 
           <Route path="settings" element={<Settings />} />
-
-          {/* <Route path="edit/:id" element={<EditProduct />} /> */}
         </Route>
 
         {/* 404 */}
+
         <Route path="*" element={<NotFound />} />
       </Routes>
 
