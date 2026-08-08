@@ -172,12 +172,12 @@ export default function ManageProducts() {
                         <Eye size={18} />
                       </Link>
 
-                      <Link
+                      {/* <Link
                         to={`/dashboard/edit/${product.id}`}
                         className="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-lg transition"
                       >
                         <Pencil size={18} />
-                      </Link>
+                      </Link> */}
 
                       <button
                         onClick={() => handleDelete(product.id)}
@@ -256,13 +256,13 @@ export default function ManageProducts() {
                     View
                   </Link>
 
-                  <Link
+                  {/* <Link
                     to={`/dashboard/edit/${product.id}`}
                     className="flex items-center justify-center gap-2 rounded-xl bg-yellow-500 py-3 text-white hover:bg-yellow-600 transition"
                   >
-                    {/* <Pencil size={18} />
-                    Edit */}
-                  </Link>
+                    <Pencil size={18} />
+                    Edit
+                  </Link> */}
 
                   <button
                     onClick={() => handleDelete(product.id)}

@@ -278,7 +278,7 @@ export default function AddProduct() {
         </div>
 
         {/* Featured */}
-        {/* <div className="flex items-center gap-3 mt-8">
+        <div className="flex items-center gap-3 mt-8">
           <input
             type="checkbox"
             name="featured"
@@ -287,7 +287,7 @@ export default function AddProduct() {
           />
 
           <span>Featured Product</span>
-        </div> */}
+        </div>
         {/* Description */}
         <div className="md:col-span-2">
           <label className="font-semibold">Description</label>

@@ -25,7 +25,7 @@ import Categories from "./pages/Categories";
 import Customers from "./pages/Customers";
 import Enquiries from "./pages/Enquiries";
 import Settings from "./pages/Settings";
-import EditProduct from "./pages/EditProduct";
+// import EditProduct from "./pages/EditProduct";
 
 import NotFound from "./pages/NotFound";
 
@@ -90,7 +90,7 @@ export default function App() {
 
           <Route path="settings" element={<Settings />} />
 
-          <Route path="edit/:id" element={<EditProduct />} />
+          {/* <Route path="edit/:id" element={<EditProduct />} /> */}
         </Route>
 
         {/* 404 */}
