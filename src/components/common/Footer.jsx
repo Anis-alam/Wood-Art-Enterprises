@@ -160,6 +160,12 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col lg:flex-row justify-between items-center gap-6">
+          <a
+            href="https://anis-alam-portfolio.netlify.app/"
+            className="text-gray-400 text-center"
+          >
+            Developed by Anis
+          </a>
           <p className="text-gray-400 text-center">
             © 2026 WOOD ART ENTERPRISES. All Rights Reserved.
           </p>
@@ -184,7 +190,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/wood_artofficial?utm_source=qr&igsh=MTRmdGI0NzRidGVzaQ%3D%3D"
               className="w-11 h-11 rounded-full bg-pink-600 hover:bg-pink-700 flex items-center justify-center transition"
             >
               <FaInstagram size={20} />
